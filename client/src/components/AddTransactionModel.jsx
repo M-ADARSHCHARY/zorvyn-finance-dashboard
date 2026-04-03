@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTransaction } from "../redux/transaction/transactionSlice";
+import { toast } from "react-hot-toast";
 
 const AddTransactionModal = ({ close }) => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const AddTransactionModal = ({ close }) => {
     };
 
     dispatch(addTransaction(newTransaction));
+    toast.success("Transaction added successfully");
     close();
   };
 

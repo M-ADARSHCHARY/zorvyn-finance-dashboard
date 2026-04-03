@@ -1,11 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import { deleteTransaction } from "../redux/transaction/transactionSlice";
 import { FiEdit, FiPlus, FiTrash2 } from "react-icons/fi";
+import { toast } from "react-hot-toast";
 
 const TransactionTable = ({ data, setShowModal }) => {
   const { role } = useSelector((state) => state.transactions);
 
   const dispatch = useDispatch();
+
+  const handleDelete = (id) => {
+    dispatch(deleteTransaction(id));
+    toast.success("Transaction deleted");
+  };
 
   return (
     <div className="bg-white dark:bg-slate-900 p-4 sm:p-5 rounded-xl shadow overflow-hidden transition-colors">
@@ -68,7 +74,7 @@ const TransactionTable = ({ data, setShowModal }) => {
 
                       <button
                         title="delete"
-                        onClick={() => dispatch(deleteTransaction(t.id))}
+                        onClick={() => handleDelete(t.id)}
                         className="p-2 rounded-full hover:bg-red-100 dark:hover:bg-red-900/30 transition"
                       >
                         <FiTrash2 size={18} className="text-red-500" />
