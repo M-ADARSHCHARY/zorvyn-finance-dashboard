@@ -11,7 +11,7 @@ import AddTransactionModal from "../components/AddTransactionModel";
 
 const Transactions = () => {
     const [showModal, setShowModal] = useState(false);
-    const {search, type, sort, category, transactions} = useSelector((state) => state.transactions)
+    const {search, type, sort, category, transactions, role} = useSelector((state) => state.transactions)
     const [totalAmount, setTotalAmount] = useState(0)
     const dispatch = useDispatch()
 
@@ -83,10 +83,30 @@ const Transactions = () => {
         </select>
       </div>
       
-      <div>
-        <h4>Total Expenses: ₹{totalAmount.toLocaleString("en-IN")}</h4>
-      </div>
-      <TransactionTable data={sortedData} setShowModal={setShowModal}/>
+      {transactions.length === 0 ? (
+        <div className="flex flex-col items-center justify-center py-16">
+          <div className="text-6xl mb-4">💰</div>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2">No transactions yet</h2>
+          <p className="text-slate-600 dark:text-slate-400 text-center max-w-sm mb-6">
+            Start tracking your finances by adding your first transaction.
+          </p>
+          {role === "admin" && (
+            <button 
+              onClick={() => setShowModal(true)}
+              className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-medium transition"
+            >
+              Add Your First Transaction
+            </button>
+          )}
+        </div>
+      ) : (
+        <>
+          <div>
+            <h4 className="text-slate-900 dark:text-slate-100">Total Expenses: <span className="font-semibold">₹{totalAmount.toLocaleString("en-IN")}</span></h4>
+          </div>
+          <TransactionTable data={sortedData} setShowModal={setShowModal} transactions={transactions}/>
+        </>
+      )}
       
       {showModal && (
         <AddTransactionModal close={()=>{setShowModal(!showModal)}}/>

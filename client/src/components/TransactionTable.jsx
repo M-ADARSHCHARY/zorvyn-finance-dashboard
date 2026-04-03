@@ -3,7 +3,7 @@ import { deleteTransaction } from "../redux/transaction/transactionSlice";
 import { FiEdit, FiPlus, FiTrash2 } from "react-icons/fi";
 import { toast } from "react-hot-toast";
 
-const TransactionTable = ({ data, setShowModal }) => {
+const TransactionTable = ({ data, setShowModal, transactions }) => {
   const { role } = useSelector((state) => state.transactions);
 
   const dispatch = useDispatch();
@@ -26,22 +26,31 @@ const TransactionTable = ({ data, setShowModal }) => {
         <p className="text-sm text-red-500 dark:text-red-400 mb-2">* You have view-only access</p>
       )}
 
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[720px] text-left text-slate-800 dark:text-slate-200">
-          <thead>
-            <tr className="border-b border-slate-200 dark:border-slate-700 text-sm">
-              <th className="p-3">Date</th>
-              <th className="p-3">Title</th>
-              <th className="p-3">Category</th>
-              <th className="p-3">Type</th>
-              <th className="p-3">Amount</th>
+      {data.length === 0 ? (
+        <div className="flex flex-col items-center justify-center py-12">
+          <div className="text-5xl mb-4">📋</div>
+          <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">No transactions found</h3>
+          <p className="text-slate-600 dark:text-slate-400 text-center max-w-sm">
+            {data.length === 0 && transactions ? "Your filters didn't match any transactions. Try adjusting your search or filters." : "Get started by adding your first transaction!"}
+          </p>
+        </div>
+      ) : (
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[720px] text-left text-slate-800 dark:text-slate-200">
+            <thead>
+              <tr className="border-b border-slate-200 dark:border-slate-700 text-sm">
+                <th className="p-3">Date</th>
+                <th className="p-3">Title</th>
+                <th className="p-3">Category</th>
+                <th className="p-3">Type</th>
+                <th className="p-3">Amount</th>
 
-              {role === "admin" && <th className="p-3">Actions</th>}
-            </tr>
-          </thead>
+                {role === "admin" && <th className="p-3">Actions</th>}
+              </tr>
+            </thead>
 
-          <tbody className="text-sm">
-            {data.map((t) => (
+            <tbody className="text-sm">
+              {data.map((t) => (
               <tr
                 key={t.id}
                 className="bg-white dark:bg-slate-900 shadow-sm hover:shadow-md transition rounded-lg"
@@ -82,11 +91,12 @@ const TransactionTable = ({ data, setShowModal }) => {
                     </div>
                   </td>
                 )}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 };

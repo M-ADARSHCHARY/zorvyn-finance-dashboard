@@ -1,16 +1,36 @@
-# React + Vite
+# FinPulse Client - Frontend Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend application for **FinPulse**, a personal finance dashboard built with React and Vite.
 
-Currently, two official plugins are available:
+For full project documentation, setup instructions, and feature overview, please see the [main README](../README.md) in the project root.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Quick Start
 
-## React Compiler
+```bash
+npm install
+npm run dev      # Start dev server on http://localhost:5173
+npm run build    # Build for production
+npm run preview  # Preview production build
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
+- **React 19** - UI framework
+- **Vite** - Build tool (lightning fast HMR)
+- **Tailwind CSS** - Styling
+- **Redux Toolkit** - State management
+- **Recharts** - Chart components
+- **React Router** - Navigation
+- **React Hot Toast** - Notifications
 
-## Expanding the ESLint configuration
+## Directory Structure
+```
+src/
+├── components/     # Reusable UI components
+├── pages/          # Page-level components
+├── redux/          # Redux store & slices
+├── utils/          # Helper functions
+├── data/           # Mock data
+└── App.jsx         # Root component
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+See the main README for detailed architecture and feature documentation.
