@@ -2,7 +2,7 @@ import react from "react"
 const InsightCard = ({ title, value }) => (
   <div className="bg-white dark:bg-slate-900 p-5 rounded-xl shadow transition-colors">
     <h3 className="text-gray-500 dark:text-slate-400 text-sm">{title}</h3>
-    <p className="text-lg font-semibold mt-2 text-slate-900 dark:text-slate-100">{value}</p>
+    <p className="text-lg font-semibold mt-2 text-slate-900 dark:text-slate-100 insight-glow">{value}</p>
   </div>
 );
 

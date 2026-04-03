@@ -1,4 +1,3 @@
-import { transactions } from "../data/transactions";
 import SummaryCards from "../components/SummaryCards";
 import LineChartComponent from "../components/LineChartComponent";
 import PieChartComponent from "../components/PieChartComponent";
@@ -15,8 +14,12 @@ import {
   getMonthlyComparison,
   getInsightMessage,
 } from "../utils/insights";
+import { use } from "react";
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
+  const {transactions} = useSelector((state) => state.transactions)
+
   const summary = calculateSummary(transactions);
 
   const categoryData = getCategoryData(transactions);

@@ -12,7 +12,7 @@ const Navbar = ({ theme, toggleTheme }) => {
 
   return (
     <div className="bg-white dark:bg-slate-900 shadow px-4 py-3 sm:px-6 flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-center transition-colors">
-      <h1 className="text-base sm:text-lg font-semibold text-slate-900 dark:text-slate-100">Finance Dashboard</h1>
+      <h1 className="text-base sm:text-lg font-semibold text-slate-900 dark:text-slate-100">FinPulse</h1>
 
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between sm:justify-end gap-3 w-full sm:w-auto">
         <button

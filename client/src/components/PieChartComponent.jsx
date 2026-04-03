@@ -5,7 +5,7 @@ const COLORS = ["#2563eb", "#16a34a", "#f59e0b", "#dc2626", "#7c3aed", "#0ea5e9"
 const PieChartComponent = ({ data }) => {
   return (
     <div className="bg-white dark:bg-slate-900 p-4 sm:p-5 rounded-xl shadow w-full transition-colors">
-      <h2 className="mb-4 font-semibold text-slate-900 dark:text-slate-100">Spending Breakdown</h2>
+      <h2 className="mb-4 font-semibold text-slate-900 dark:text-slate-100">Spending Breakdown - OverAll</h2>
 
       <div className="h-[260px] w-full select-none" onMouseDown={(e) => e.preventDefault()}>
         <ResponsiveContainer width="100%" height="100%">

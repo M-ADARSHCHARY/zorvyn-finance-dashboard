@@ -7,6 +7,7 @@ const transactionSlice = createSlice({
     transactions: initialData,
     search: "",
     type: "all",
+    category: "all",
     sort: "latest",
     role: "viewer"
   },
@@ -16,6 +17,9 @@ const transactionSlice = createSlice({
     },
     setType: (state, action) => {
       state.type = action.payload;
+    },
+    setCategory: (state, action) => {
+      state.category = action.payload;
     },
     setSort: (state, action) => {
       state.sort = action.payload;
@@ -36,6 +40,7 @@ const transactionSlice = createSlice({
 
 export const { setSearch,
                setType,
+               setCategory,
                setSort, 
                setRole,
                deleteTransaction,
